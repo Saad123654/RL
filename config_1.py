@@ -1,7 +1,9 @@
-import pickle
+import highway_env
+import gymnasium as gym
 
+env = gym.make("highway-fast-v0", render_mode="rgb_array")
 
-config_dict = {
+config = {
     "observation": {
         "type": "OccupancyGrid",
         "vehicles_count": 10,
@@ -46,9 +48,4 @@ config_dict = {
     "disable_collision_checks": True,
 }
 
-with open("config.pkl", "wb") as f:
-    pickle.dump(config_dict, f)
-
-# env = gym.make("highway-fast-v0", render_mode="rgb_array")
-# env.unwrapped.configure(config)
-# print(env.reset())
+env.unwrapped.configure(config)
